@@ -33,6 +33,8 @@ export class ProgressManager {
                     progressPointsList.list.forEach(progressItem => {
                         const versionRef = this.firestoreDb.collection('progress_tracking')
                             .doc(progressItem.project)
+                            .collection('datapoints')
+                            .doc(progressItem.timestamp.toString())
 
                         batch.set(versionRef, {
                             project: progressItem.project,
