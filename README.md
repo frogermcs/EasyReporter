@@ -41,3 +41,40 @@ Body:
     "timestamp" : 1
 }
 ```
+
+### reportProgressBulk HTTPS Function
+
+**URL**
+https://<forebase projects base path>/reportProgressBulk
+
+**Method**
+`POST`
+
+**Request data**
+
+**Progress** object: 
+* `project` - string, required
+* `progress` - float, required
+* `timestamp` - integer, required
+
+**Example request:**
+
+POST: `https://<forebase projects base path>/reportProgressBulk`
+
+Headers: `Content-Type: application/json`
+
+Body:
+```json
+[
+	{
+		"project": "migration-progress",
+		"progress" : 77.11,
+		"timestamp" : 1
+	},
+	{
+		"project": "migration-progress",
+		"progress" : 80.76,
+		"timestamp" : 2
+	}
+]
+```
