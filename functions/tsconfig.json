@@ -3,6 +3,7 @@
     "module": "commonjs",
     "experimentalDecorators": true,
     "noImplicitReturns": true,
+    "noImplicitAny": false,
     "noUnusedLocals": true,
     "outDir": "lib",
     "sourceMap": true,
