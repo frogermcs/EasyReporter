@@ -78,3 +78,35 @@ Body:
 	}
 ]
 ```
+
+
+### reportProgressToBQ Firestore Trigger Function
+
+This is Firestore Function trigger that copy newly created Firestore document into Big Query table.
+
+Firestore document path: `progress_tracking/{project}/datapoints/{point}`
+
+**Big Query setup**
+
+Dataset name: `reporting_dataset`
+
+Table name: `datapoints`
+
+Database schema:
+```
+project		STRING	REQUIRED		
+timestamp	INTEGER	REQUIRED
+progress	FLOAT	REQUIRED	
+```
+
+## Firestore Data Scheme
+
+Functions `reportProgress` and `reportProgressBulk` add documents into Firebase Firestore collections. Collections path:
+
+`progress_tracking/{project}/datapoints/{point}`
+
+Document scheme:
+
+* `project` - string
+* `timestamp` - number
+* `progress` - number
