@@ -1,5 +1,6 @@
 import { Progress, WrappedProgress } from './models/progress';
 import { validateOrReject } from "class-validator";
+import { Config } from "./config"
 import * as admin from 'firebase-admin';
 
 export class ProgressManager {
@@ -31,9 +32,9 @@ export class ProgressManager {
                 .then(() => {
                     const batch = this.firestoreDb.batch();
                     progressPointsList.list.forEach(progressItem => {
-                        const versionRef = this.firestoreDb.collection('progress_tracking')
+                        const versionRef = this.firestoreDb.collection(Config.PROGRESS_FIRESTORE_ROOT)
                             .doc(progressItem.project)
-                            .collection('datapoints')
+                            .collection(Config.PROGRESS_FIRESTORE_PROJECT_COLLECTION)
                             .doc(progressItem.timestamp.toString())
 
                         batch.set(versionRef, {
